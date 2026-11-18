@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Mula-Know Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      button, [role="button"], select, summary, a.btn { min-height: 2.25rem; }
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #f4f2ec;
+        --surface: #fffdf8;
+        --surface-2: #eceade;
+        --ink: #1c2420;
+        --ink-soft: #4c5750;
+        --ink-faint: #7a857e;
+        --line: #ddd8c8;
+        --teal: #0e5f4e;
+        --teal-soft: #dcebe4;
+        --amber: #b97e10;
+        --amber-soft: #f6ead0;
+        --red: #a83a32;
+        --red-soft: #f5dedb;
+        --green: #1e7a3c;
+        --green-soft: #dcefe0;
+        --blue: #2456a6;
+        --blue-soft: #dde7f6;
+        --shadow: 0 1px 2px rgba(28,36,32,.06), 0 8px 24px -12px rgba(28,36,32,.18);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121614;
+          --surface: #1a1f1c;
+          --surface-2: #232925;
+          --ink: #ece9df;
+          --ink-soft: #b3bcb4;
+          --ink-faint: #828d84;
+          --line: #333a35;
+          --teal: #4cc2a4;
+          --teal-soft: #173a31;
+          --amber: #e0a83e;
+          --amber-soft: #3d3013;
+          --red: #e08a82;
+          --red-soft: #40201d;
+          --green: #6fce8b;
+          --green-soft: #1c3524;
+          --blue: #82a9e8;
+          --blue-soft: #1e2c47;
+          --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+        }
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-size: 15px;
+        line-height: 1.55;
+      }
+      .wrap { max-width: 1080px; margin: 0 auto; padding: 20px 16px 56px; }
+      a { color: var(--teal); }
+      .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+      /* ---------- header ---------- */
+      .snap-note {
+        display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline;
+        font-size: 12.5px; color: var(--ink-faint); margin-bottom: 10px;
+      }
+      .snap-note .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; margin-right: 5px; }
+      h1 { font-size: clamp(26px, 5vw, 38px); line-height: 1.12; margin: 0 0 6px; font-weight: 800; letter-spacing: -0.02em; }
+      .lede { color: var(--ink-soft); max-width: 62ch; margin: 0 0 20px; font-size: 15.5px; }
+      .lede strong { color: var(--ink); }
+
+      .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 22px; }
+      .stat {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+        padding: 14px 16px; box-shadow: var(--shadow);
+      }
+      .stat .num { font-family: "IBM Plex Mono", monospace; font-size: 26px; font-weight: 600; line-height: 1.1; }
+      .stat .lbl { font-size: 12px; color: var(--ink-faint); margin-top: 3px; font-weight: 600; letter-spacing: .02em; }
+      .stat .sub { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+      /* ---------- sections ---------- */
+      section { margin-top: 30px; }
+      h2 { font-size: 19px; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 4px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+      h2 .hint { font-size: 12.5px; font-weight: 600; color: var(--ink-faint); letter-spacing: 0; }
+      .sec-sub { color: var(--ink-soft); font-size: 13.5px; margin: 0 0 14px; max-width: 70ch; }
+
+      /* ---------- countdown ---------- */
+      .next-up {
+        background: var(--teal); color: #f2f7f3; border-radius: 12px; padding: 18px 20px;
+        display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between;
+      }
+      @media (prefers-color-scheme: dark) { .next-up { background: #14503f; } }
+      .next-up .k { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .75; }
+      .next-up .t { font-size: 19px; font-weight: 800; line-height: 1.25; }
+      .next-up .d { font-size: 13px; opacity: .85; }
+      .count { display: flex; gap: 8px; }
+      .count .cell { background: rgba(255,255,255,.13); border-radius: 8px; padding: 8px 10px; text-align: center; min-width: 58px; }
+      .count .v { font-family: "IBM Plex Mono", monospace; font-size: 21px; font-weight: 600; line-height: 1; }
+      .count .u { font-size: 10.5px; opacity: .8; margin-top: 3px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+
+      /* ---------- filters ---------- */
+      .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
+      .filters button {
+        font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+        border-radius: 999px; padding: 6px 14px;
+      }
+      .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+      /* ---------- video cards ---------- */
+      .video-card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 18px 20px; margin-bottom: 12px;
+      }
+      .video-card[hidden] { display: none; }
+      .vc-head { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: flex-start; justify-content: space-between; }
+      .vc-title { font-size: 17px; font-weight: 800; line-height: 1.3; margin: 0; }
+      .vc-meta { font-size: 12.5px; color: var(--ink-faint); margin-top: 3px; }
+      .badge {
+        font-size: 11.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+        border-radius: 999px; padding: 4px 10px; white-space: nowrap;
+      }
+      .badge.live { background: var(--green-soft); color: var(--green); }
+      .badge.sched { background: var(--amber-soft); color: var(--amber); }
+      .metrics { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 12px 0 4px; }
+      .metrics .m .v { font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: 16px; }
+      .metrics .m .k { font-size: 11.5px; color: var(--ink-faint); font-weight: 700; }
+      .plat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 12px; }
+      .plat {
+        border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; background: var(--surface);
+        font-size: 12px;
+      }
+      .plat .pname { font-weight: 800; font-size: 12.5px; display: block; margin-bottom: 2px; }
+      .plat .pstat { color: var(--ink-soft); display: block; line-height: 1.4; }
+      .plat a { font-size: 12px; font-weight: 700; text-decoration: none; display: inline-block; margin-top: 3px; }
+      .plat a:hover { text-decoration: underline; }
+      .st-live { color: var(--green); font-weight: 700; }
+      .st-sched { color: var(--amber); font-weight: 700; }
+      .st-unknown { color: var(--ink-faint); font-weight: 600; }
+      .vc-note { font-size: 13px; color: var(--ink-soft); margin: 12px 0 0; border-top: 1px dashed var(--line); padding-top: 10px; }
+
+      /* ---------- comments ---------- */
+      .comment-panel {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 18px 20px;
+      }
+      .clear-row { display: flex; gap: 14px; align-items: flex-start; }
+      .clear-icon {
+        flex: none; width: 40px; height: 40px; border-radius: 50%;
+        background: var(--green-soft); color: var(--green);
+        display: grid; place-items: center; font-size: 19px; font-weight: 800;
+      }
+      .clear-row h3 { margin: 2px 0 4px; font-size: 16px; }
+      .clear-row p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+      .limits { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+      .limit {
+        border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-size: 13px;
+        background: var(--surface-2);
+      }
+      .limit b { display: block; font-size: 13.5px; margin-bottom: 3px; }
+      .limit p { margin: 0; color: var(--ink-soft); }
+      .limit .tag { font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+      .tag.blocked { color: var(--red); }
+      .tag.pending { color: var(--amber); }
+
+      /* ---------- connections ---------- */
+      .conn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .conn {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 18px 20px;
+      }
+      .conn h3 { margin: 0 0 2px; font-size: 16px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+      .conn .sub { font-size: 12.5px; color: var(--ink-faint); margin: 0 0 12px; }
+      .check { list-style: none; margin: 0; padding: 0; }
+      .check li { display: flex; gap: 9px; padding: 6px 0; font-size: 13.5px; border-top: 1px dashed var(--line); }
+      .check li:first-child { border-top: 0; }
+      .check .ic { flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 800; margin-top: 1px; }
+      .ic.done { background: var(--green-soft); color: var(--green); }
+      .ic.todo { background: var(--surface-2); color: var(--ink-faint); border: 1px solid var(--line); }
+      .ic.wait { background: var(--amber-soft); color: var(--amber); }
+      .check .d { color: var(--ink-faint); font-size: 12.5px; display: block; }
+      .progress { height: 8px; border-radius: 99px; background: var(--surface-2); overflow: hidden; margin: 4px 0 12px; }
+      .progress i { display: block; height: 100%; background: var(--amber); border-radius: 99px; }
+
+      /* ---------- restock planner ---------- */
+      .restock-alert {
+        display: flex; gap: 12px; align-items: flex-start;
+        background: var(--amber-soft); border: 1px solid var(--line); border-radius: 12px;
+        padding: 14px 18px; margin-top: 14px; font-size: 14px;
+      }
+      .restock-alert .ra-ic { flex: none; font-weight: 800; color: var(--amber); font-size: 17px; line-height: 1.4; }
+      .restock-alert p { margin: 0; }
+      .restock-alert strong { color: var(--ink); }
+      .planner {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+        box-shadow: var(--shadow); padding: 18px 20px; margin-top: 12px;
+      }
+      .planner-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+      .field label { display: block; font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 5px; }
+      .field select {
+        width: 100%; font: inherit; font-size: 14px; font-weight: 600;
+        background: var(--surface); color: var(--ink); border: 1px solid var(--line);
+        border-radius: 8px; padding: 8px 10px; min-height: 2.25rem;
+      }
+      .field .fh { font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+      .plan-out { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+      .plan-out .po { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; background: var(--surface-2); }
+      .plan-out .po .v { font-size: 17px; font-weight: 800; line-height: 1.25; }
+      .plan-out .po .k { font-size: 11.5px; color: var(--ink-faint); font-weight: 700; letter-spacing: .03em; text-transform: uppercase; margin-top: 3px; }
+      .plan-out .po.warn .v { color: var(--red); }
+      .slots { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 16px; }
+      .slot { border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; font-size: 12px; background: var(--surface); }
+      .slot .sd { font-weight: 800; font-size: 12.5px; display: block; }
+      .slot .ss { display: block; margin-top: 2px; line-height: 1.4; }
+      .slot.full { border-color: var(--green); }
+      .slot.full .ss { color: var(--green); font-weight: 700; }
+      .slot.empty .ss { color: var(--red); font-weight: 700; }
+      .slot.need { background: var(--amber-soft); }
+      .slot.off { opacity: .55; }
+      .slot.off .ss { color: var(--ink-faint); }
+      .planner .foot-note { font-size: 12.5px; color: var(--ink-faint); margin: 14px 0 0; }
+      @media (max-width: 760px) {
+        .planner-grid, .plan-out { grid-template-columns: 1fr; }
+        .slots { grid-template-columns: 1fr 1fr; }
+      }
+
+      /* ---------- schedule ---------- */
+      .sched-list { display: grid; gap: 10px; }
+      .sched {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+        padding: 14px 18px; display: flex; flex-wrap: wrap; gap: 6px 20px; align-items: center;
+      }
+      .sched .when { font-family: "IBM Plex Mono", monospace; font-weight: 600; font-size: 15px; white-space: nowrap; }
+      .sched .what { font-weight: 700; }
+      .sched .where { font-size: 12.5px; color: var(--ink-faint); width: 100%; }
+
+      footer { margin-top: 36px; font-size: 12.5px; color: var(--ink-faint); border-top: 1px solid var(--line); padding-top: 14px; }
+      footer p { margin: 0 0 6px; max-width: 75ch; }
+
+      @media (max-width: 760px) {
+        .stat-grid { grid-template-columns: 1fr 1fr; }
+        .plat-grid { grid-template-columns: 1fr 1fr; }
+        .conn-grid, .limits { grid-template-columns: 1fr; }
+        .count .cell { min-width: 50px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <div class="snap-note">
+        <span><span class="dot"></span>Snapshot data: <strong>Rabu, 18 Nov 2026 · 20.41 WIB</strong></span>
+        <span>Sumber: YouTube Data API v3 (terverifikasi live) + catatan jadwal upload</span>
+      </div>
+
+      <h1>Status upload @mulaknow</h1>
+      <p class="lede">Satu tempat buat ngecek video mana yang sudah tayang, mana yang masih terjadwal, dan apakah ada komentar yang perlu ditanggapi. Sorotan snapshot ini: <strong>Kosovo diam-diam jadi video terlaris channel</strong> dengan 1.334 views di YouTube, jauh di atas India yang baru 4 views.</p>
+
+      <div class="stat-grid">
+        <div class="stat"><div class="num">2</div><div class="lbl">SUBSCRIBER YOUTUBE</div><div class="sub">Channel @mulaknow</div></div>
+        <div class="stat"><div class="num">2</div><div class="lbl">VIDEO PUBLIK DI YOUTUBE</div><div class="sub">Yang terbaca API key</div></div>
+        <div class="stat"><div class="num">2</div><div class="lbl">VIDEO TERJADWAL</div><div class="sub">Tayang 19 &amp; 20 Nov, 18.00 WIB</div></div>
+        <div class="stat"><div class="num">0</div><div class="lbl">KOMENTAR PERLU DIBALAS</div><div class="sub">Di video publik YouTube</div></div>
+      </div>
+
+      <div class="next-up" role="region" aria-label="Tayangan berikutnya">
+        <div>
+          <div class="k">Tayang berikutnya</div>
+          <div class="t">Siapa Khalifah Terakhir?</div>
+          <div class="d">Kamis, 19 Nov 2026 · 18.00 WIB · YouTube, TikTok, Instagram, Threads, Facebook</div>
+        </div>
+        <div class="count" aria-live="off">
+          <div class="cell"><div class="v" id="cd-d">–</div><div class="u">Hari</div></div>
+          <div class="cell"><div class="v" id="cd-h">–</div><div class="u">Jam</div></div>
+          <div class="cell"><div class="v" id="cd-m">–</div><div class="u">Menit</div></div>
+          <div class="cell"><div class="v" id="cd-s">–</div><div class="u">Detik</div></div>
+        </div>
+      </div>
+
+      <div class="restock-alert" role="note">
+        <span class="ra-ic" aria-hidden="true">!</span>
+        <p><strong>Stok video terjadwal habis Jumat, 20 Nov 2026.</strong> Setelah Al-Fatihah tayang, belum ada video untuk slot Sabtu, 21 Nov 2026 jam 18.00 WIB. Rincian stok dan tenggat restoknya ada di bagian <a href="#h-stok">Stok &amp; restok</a> di bawah.</p>
+      </div>
+
+      <section aria-labelledby="h-video">
+        <h2 id="h-video">Status per video <span class="hint">4 video · 5 platform</span></h2>
+        <p class="sec-sub">Status YouTube untuk video publik dibaca langsung dari API. Video terjadwal belum muncul di API key (butuh OAuth), jadi statusnya mengikuti catatan penjadwalan. Platform lain ditandai sesuai verifikasi terakhir.</p>
+
+        <div class="filters" role="group" aria-label="Filter status video">
+          <button type="button" data-filter="all" aria-pressed="true">Semua</button>
+          <button type="button" data-filter="live" aria-pressed="false">Sudah tayang</button>
+          <button type="button" data-filter="sched" aria-pressed="false">Terjadwal</button>
+        </div>
+
+        <article class="video-card" data-status="live">
+          <div class="vc-head">
+            <div>
+              <h3 class="vc-title">93% Muslim, Tapi Sekuler? (Kosovo)</h3>
+              <div class="vc-meta">YouTube tayang Rabu, 18 Nov 2026 · 14.33 WIB · ID <span class="mono">0h6rYXmxVtw</span></div>
+            </div>
+            <span class="badge live">Tayang</span>
+          </div>
+          <div class="metrics">
+            <div class="m"><span class="v">1.334</span> <span class="k">VIEWS YT</span></div>
+            <div class="m"><span class="v">15</span> <span class="k">LIKES YT</span></div>
+            <div class="m"><span class="v">1</span> <span class="k">KOMENTAR YT</span></div>
+          </div>
+          <div class="plat-grid">
+            <div class="plat"><span class="pname">YouTube</span><span class="pstat st-live">Tayang · publik</span><a href="https://www.youtube.com/shorts/0h6rYXmxVtw" target="_blank" rel="noopener">Buka video</a></div>
+            <div class="plat"><span class="pname">TikTok</span><span class="pstat st-unknown">Belum terverifikasi di snapshot ini</span></div>
+            <div class="plat"><span class="pname">Instagram</span><span class="pstat st-unknown">Belum terverifikasi di snapshot ini</span></div>
+            <div class="plat"><span class="pname">Threads</span><span class="pstat st-unknown">Belum terverifikasi di snapshot ini</span></div>
+            <div class="plat"><span class="pname">Facebook</span><span class="pstat st-unknown">Belum terverifikasi di snapshot ini</span></div>
+          </div>
+          <p class="vc-note">Satu-satunya komentar di YouTube adalah pinned comment dari @mulaknow sendiri (soal Indonesia yang belum mengakui Kosovo). Tidak ada komentar penonton yang menunggu balasan.</p>
+        </article>
+
+        <article class="video-card" data-status="live">
+          <div class="vc-head">
+            <div>
+              <h3 class="vc-title">Minoritas, tapi 600 Tahun Berkuasa di India</h3>
+              <div class="vc-meta">YouTube tayang 17 Nov 2026 · versi v5 dengan thumbnail Vox 1 detik pertama · ID <span class="mono">8wMZ-0QCNIE</span></div>
+            </div>
+            <span class="badge live">Tayang</span>
+          </div>
+          <div class="metrics">
+            <div class="m"><span class="v">4</span> <span class="k">VIEWS YT</span></div>
+            <div class="m"><span class="v">0</span> <span class="k">LIKES YT</span></div>
+            <div class="m"><span class="v">0</span> <span class="k">KOMENTAR YT</span></div>
+          </div>
+          <div class="plat-grid">
+            <div class="plat"><span class="pname">YouTube</span><span class="pstat st-live">Tayang · publik</span><a href="https://www.youtube.com/shorts/8wMZ-0QCNIE" target="_blank" rel="noopener">Buka video</a></div>
+            <div class="plat"><span class="pname">TikTok</span><span class="pstat st-live">Tayang · publik · 89 detik</span><a href="https://www.tiktok.com/@mulaknow/video/7709036689993272594" target="_blank" rel="noopener">Buka video</a></div>
+            <div class="plat"><span class="pname">Instagram</span><span class="pstat st-live">Tayang · Reel</span><a href="https://www.instagram.com/reel/Df1j6Jxjrf3/" target="_blank" rel="noopener">Buka Reel</a></div>
+            <div class="plat"><span class="pname">Threads</span><span class="pstat st-live">Tayang · post <span class="mono">17993575866117765</span></span></div>
+            <div class="plat"><span class="pname">Facebook</span><span class="pstat st-unknown">Belum terverifikasi di snapshot ini</span></div>
+          </div>
+          <p class="vc-note">Di YouTube video ini kalah jauh dari Kosovo (4 vs 1.334 views). Angka platform lain belum terbaca di snapshot ini.</p>
+        </article>
+
+        <article class="video-card" data-status="sched">
+          <div class="vc-head">
+            <div>
+              <h3 class="vc-title">Siapa Khalifah Terakhir?</h3>
+              <div class="vc-meta">Versi final v14 · 47,43 detik · video bersih tanpa thumbnail tempel, cover dipasang terpisah</div>
+            </div>
+            <span class="badge sched">Terjadwal · 19 Nov 18.00</span>
+          </div>
+          <div class="plat-grid">
+            <div class="plat"><span class="pname">YouTube</span><span class="pstat st-sched">Terjadwal · thumbnail custom terpasang · lolos cek copyright</span><a href="https://youtube.com/shorts/4eiwCKVpufk" target="_blank" rel="noopener">Buka (pratinjau)</a></div>
+            <div class="plat"><span class="pname">TikTok</span><span class="pstat st-sched">Terjadwal 19 Nov 18.00 WIB · cover terpasang</span></div>
+            <div class="plat"><span class="pname">Instagram</span><span class="pstat st-sched">Terjadwal 19 Nov 18.00 WIB · cover terpasang</span></div>
+            <div class="plat"><span class="pname">Threads</span><span class="pstat st-sched">Terjadwal 19 Nov 18.00 WIB</span></div>
+            <div class="plat"><span class="pname">Facebook</span><span class="pstat st-sched">Aman · terjadwal di Page “Mula Know” (dikonfirmasi Faris)</span></div>
+          </div>
+          <p class="vc-note">Belum terbaca API karena masih terjadwal. Begitu tayang, statusnya pindah ke “Tayang” pada snapshot berikutnya. Caption final sudah termasuk penjelasan parlemen Hamid II vs Muhammad VI dan gelar simbolik Abdul Majid II.</p>
+        </article>
+
+        <article class="video-card" data-status="sched">
+          <div class="vc-head">
+            <div>
+              <h3 class="vc-title">Kenapa Al-Fatihah di Halaman Pertama?</h3>
+              <div class="vc-meta">Short 4 · final 66,4 detik · 1080×1920 · topik urutan mushaf vs urutan wahyu (tawqifi)</div>
+            </div>
+            <span class="badge sched">Terjadwal · 20 Nov 18.00</span>
+          </div>
+          <div class="plat-grid">
+            <div class="plat"><span class="pname">YouTube</span><span class="pstat st-sched">Terjadwal · thumbnail custom terpasang · deskripsi + atribusi foto lengkap</span><a href="https://youtube.com/shorts/NYZoVEmUmFg" target="_blank" rel="noopener">Buka (pratinjau)</a></div>
+            <div class="plat"><span class="pname">TikTok</span><span class="pstat st-sched">Terjadwal 20 Nov 18.00 WIB · cover terpasang</span></div>
+            <div class="plat"><span class="pname">Instagram</span><span class="pstat st-sched">Terjadwal 20 Nov 18.00 WIB · cover terpasang</span></div>
+            <div class="plat"><span class="pname">Threads</span><span class="pstat st-sched">Terjadwal 20 Nov 18.00 WIB</span></div>
+            <div class="plat"><span class="pname">Facebook</span><span class="pstat st-sched">Terjadwal di Page · post ID <span class="mono">122094449919561437</span></span></div>
+          </div>
+          <p class="vc-note">Satu-satunya short yang terjadwal lengkap di 5 platform sekaligus sejauh ini.</p>
+        </article>
+      </section>
+
+      <section aria-labelledby="h-komen">
+        <h2 id="h-komen">Komentar yang perlu ditanggapi</h2>
+        <p class="sec-sub">Berdasarkan komentar yang terbaca di video publik YouTube pada snapshot 18 Nov 2026, 20.41 WIB.</p>
+        <div class="comment-panel">
+          <div class="clear-row">
+            <div class="clear-icon" aria-hidden="true">✓</div>
+            <div>
+              <h3>Tidak ada komentar yang menunggu balasan</h3>
+              <p>Kosovo punya 1 komentar, tapi itu pinned comment dari @mulaknow sendiri. India punya 0 komentar. Jadi antrean balasan YouTube saat ini kosong.</p>
+            </div>
+          </div>
+          <div class="limits">
+            <div class="limit">
+              <span class="tag blocked">TikTok · tidak bisa dibaca</span>
+              <b>Isi komentar TikTok tidak tersedia lewat API resmi</b>
+              <p>Display API hanya memberi angka jumlah komentar, bukan isinya. Endpoint komentar resmi (Research API) hanya untuk peneliti akademik/non-profit. Komentar TikTok hanya bisa dicek lewat aplikasi atau browser, atau API pihak ketiga berbayar.</p>
+            </div>
+            <div class="limit">
+              <span class="tag pending">YouTube terjadwal · menunggu OAuth</span>
+              <b>Komentar video terjadwal belum bisa dipantau</b>
+              <p>API key hanya membaca video publik. Membaca komentar butuh scope <span class="mono">youtube.force-ssl</span> lewat OAuth. Client OAuth “Mula Know Space” sudah dibuat; tinggal persetujuan consent sebagai mulanow.</p>
+            </div>
+            <div class="limit">
+              <span class="tag pending">Instagram, Threads, Facebook</span>
+              <b>Belum masuk pantauan snapshot</b>
+              <p>Komentar di tiga platform Meta ini belum dicek pada snapshot kali ini, jadi statusnya bukan “kosong”, melainkan “belum diperiksa”.</p>
+            </div>
+            <div class="limit">
+              <span class="tag pending">Aturan main agen sosmed</span>
+              <b>Balasan selalu minta persetujuan dulu</b>
+              <p>Sesuai aturan yang sudah disepakati: agen pengelola sosmed dan pembalas komen wajib minta persetujuan Faris sebelum memposting balasan apa pun, dan komentar negatif selalu diteruskan ke Faris.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="h-api">
+        <h2 id="h-api">Koneksi API <span class="hint">fondasi biar dashboard ini bisa otomatis nanti</span></h2>
+        <p class="sec-sub">YouTube sudah jalan dan terverifikasi dengan panggilan API asli. TikTok masih menunggu app review, dan app-nya baru bisa diselesaikan setelah dashboard ini ada.</p>
+        <div class="conn-grid">
+          <div class="conn">
+            <h3>YouTube Data API v3 <span class="badge live">Aktif</span></h3>
+            <p class="sub">Project “mula-know” (no. 385184462215) · kuota 10.000 unit/hari</p>
+            <ul class="check">
+              <li><span class="ic done">✓</span><span>API key “Mula Know YouTube API key” terverifikasi jalan<span class="d">Dibatasi hanya untuk YouTube Data API v3. Nilai key tersimpan aman, tidak ditampilkan di sini.</span></span></li>
+              <li><span class="ic done">✓</span><span>Baca video publik + statistik<span class="d">Kosovo dan India terbaca lengkap: views, likes, jumlah komentar.</span></span></li>
+              <li><span class="ic done">✓</span><span>OAuth client “Mula Know Space” dibuat<span class="d">Desktop app · consent screen External/Testing · test user mulanow.</span></span></li>
+              <li><span class="ic wait">!</span><span>Consent OAuth belum disetujui Faris<span class="d">Dibutuhkan untuk melihat video terjadwal/privat dan membaca komentar dengan scope youtube.force-ssl.</span></span></li>
+            </ul>
+          </div>
+          <div class="conn">
+            <h3>TikTok Display API <span class="badge sched">Draft · 2 dari 7 syarat</span></h3>
+            <p class="sub">App “Mula Know Dashboard” · App ID 7709484314526582836 · organisasi “Mula Know”</p>
+            <div class="progress" role="img" aria-label="Progres kelengkapan app TikTok: 2 dari 7 item selesai"><i style="width:28.6%"></i></div>
+            <ul class="check">
+              <li><span class="ic done">✓</span><span>App icon 1024×1024<span class="d">Sudah disiapkan dari avatar resmi “Islamic History Everyday”.</span></span></li>
+              <li><span class="ic done">✓</span><span>Teks penjelasan untuk review<span class="d">Sudah ditulis: dashboard hanya membaca daftar video dan angkanya.</span></span></li>
+              <li><span class="ic todo">·</span><span>Website URL<span class="d">Menunggu halaman dashboard ini tayang.</span></span></li>
+              <li><span class="ic todo">·</span><span>Redirect URI<span class="d">Menunggu dashboard; dipakai untuk Login Kit.</span></span></li>
+              <li><span class="ic todo">·</span><span>Terms of Service URL &amp; Privacy Policy URL<span class="d">Perlu halaman khusus di domain yang sama.</span></span></li>
+              <li><span class="ic todo">·</span><span>Demo video app<span class="d">Direkam setelah dashboard bisa dibuka.</span></span></li>
+              <li><span class="ic todo">·</span><span>Login Kit: scan QR sebagai @mulaknow<span class="d">Langkah Faris di aplikasi TikTok, setelah app bisa disimpan.</span></span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="h-stok">
+        <h2 id="h-stok">Stok &amp; restok <span class="hint">dihitung dari riwayat jadwal channel</span></h2>
+        <p class="sec-sub">Berdasarkan pola kerja sejauh ini: rilis <strong>1 video per hari jam 18.00 WIB</strong>. Yang sudah tayang: India (17 Nov) dan Kosovo (18 Nov). Yang sudah terjadwal: Khalifah Terakhir (Kamis, 19 Nov) dan Al-Fatihah (Jumat, 20 Nov). Jadi stok terjadwal <strong>habis di Jumat, 20 Nov 2026</strong>, dan slot Sabtu, 21 Nov masih kosong. Atur targetmu di bawah, tenggat restoknya dihitung otomatis.</p>
+
+        <div class="planner">
+          <div class="planner-grid">
+            <div class="field">
+              <label for="set-ritme">Ritme tayang</label>
+              <select id="set-ritme">
+                <option value="1" selected>Setiap hari · 18.00 WIB</option>
+                <option value="2">Selang sehari · 18.00 WIB</option>
+              </select>
+              <div class="fh">Mengikuti pola rilis harian yang sedang berjalan.</div>
+            </div>
+            <div class="field">
+              <label for="set-buffer">Stok aman minimum</label>
+              <select id="set-buffer">
+                <option value="3">3 hari terjadwal</option>
+                <option value="5" selected>5 hari terjadwal</option>
+                <option value="7">7 hari terjadwal</option>
+              </select>
+              <div class="fh">Berapa hari ke depan yang selalu mau sudah terjadwal.</div>
+            </div>
+            <div class="field">
+              <label for="set-lead">Waktu pengerjaan per video</label>
+              <select id="set-lead">
+                <option value="1" selected>1 hari</option>
+                <option value="2">2 hari</option>
+                <option value="3">3 hari</option>
+              </select>
+              <div class="fh">Dari naskah sampai siap jadwal, per video.</div>
+            </div>
+          </div>
+
+          <div class="plan-out" aria-live="polite">
+            <div class="po"><div class="v">Jumat, 20 Nov 2026</div><div class="k">Terjadwal sampai</div></div>
+            <div class="po warn"><div class="v" id="out-need">–</div><div class="k">Video perlu disiapkan</div></div>
+            <div class="po warn"><div class="v" id="out-deadline">–</div><div class="k">Mulai produksi paling lambat</div></div>
+          </div>
+
+          <div class="slots" id="slots" aria-label="Slot tayang 10 hari ke depan"></div>
+
+          <p class="foot-note" id="plan-note"></p>
+        </div>
+      </section>
+
+      <section aria-labelledby="h-jadwal">
+        <h2 id="h-jadwal">Jadwal tayang terdekat</h2>
+        <p class="sec-sub">Semua tayang jam 18.00 WIB, pola rilis harian yang sedang berjalan.</p>
+        <div class="sched-list">
+          <div class="sched">
+            <span class="when">KAM 19 NOV · 18.00</span>
+            <span class="what">Siapa Khalifah Terakhir?</span>
+            <span class="where">YouTube · TikTok · Instagram · Threads · Facebook Page “Mula Know”</span>
+          </div>
+          <div class="sched">
+            <span class="when">JUM 20 NOV · 18.00</span>
+            <span class="what">Kenapa Al-Fatihah di Halaman Pertama?</span>
+            <span class="where">YouTube · TikTok · Instagram · Threads · Facebook Page “Mula Know”</span>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p><strong>Cara membaca halaman ini:</strong> angka YouTube berasal dari panggilan API asli pada 18 Nov 2026 pukul 20.41 WIB dan tidak berubah sendiri. Status “belum terverifikasi” berarti platform itu belum dicek pada snapshot ini, bukan berarti videonya tidak ada. Snapshot berikutnya dibuat setiap kali status dicek ulang, dan setelah OAuth YouTube serta app TikTok selesai, cakupan datanya akan meluas.</p>
+        <p>Channel: @mulaknow di YouTube, TikTok, Instagram, dan Threads · Facebook Page “Mula Know” (ID 61596843113857).</p>
+      </footer>
+
+    </div>
+
+    <script>
+      (function () {
+        // Countdown to the next premiere: Thu 19 Nov 2026 18:00 WIB (UTC+7) = 11:00 UTC.
+        var target = Date.UTC(2026, 10, 19, 11, 0, 0);
+        var elD = document.getElementById('cd-d'), elH = document.getElementById('cd-h'),
+            elM = document.getElementById('cd-m'), elS = document.getElementById('cd-s');
+        function pad(n) { return (n < 10 ? '0' : '') + n; }
+        function tick() {
+          var diff = target - Date.now();
+          if (diff <= 0) {
+            elD.textContent = '0'; elH.textContent = '00'; elM.textContent = '00'; elS.textContent = '00';
+            return;
+          }
+          var s = Math.floor(diff / 1000);
+          elD.textContent = Math.floor(s / 86400);
+          elH.textContent = pad(Math.floor(s % 86400 / 3600));
+          elM.textContent = pad(Math.floor(s % 3600 / 60));
+          elS.textContent = pad(s % 60);
+          setTimeout(tick, 1000);
+        }
+        tick();
+
+        // ---- Restock planner, derived from the channel's scheduling history ----
+        // Snapshot "today": Wed 18 Nov 2026. Scheduled through Fri 20 Nov 2026, daily 18:00 WIB.
+        var WIB = 7 * 3600 * 1000;
+        var lastScheduled = Date.UTC(2026, 10, 20); // Fri 20 Nov 2026
+        var scheduledTitles = { '2026-11-19': 'Khalifah Terakhir', '2026-11-20': 'Al-Fatihah' };
+        var dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+        function fmtDay(ms) {
+          var d = new Date(ms + WIB);
+          return dayNames[d.getUTCDay()] + ', ' + d.getUTCDate() + ' ' + monthNames[d.getUTCMonth()] + ' ' + d.getUTCFullYear();
+        }
+        function keyOf(ms) {
+          var d = new Date(ms + WIB);
+          return d.getUTCFullYear() + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate());
+        }
+        var selRitme = document.getElementById('set-ritme'),
+            selBuffer = document.getElementById('set-buffer'),
+            selLead = document.getElementById('set-lead'),
+            outNeed = document.getElementById('out-need'),
+            outDeadline = document.getElementById('out-deadline'),
+            slotsEl = document.getElementById('slots'),
+            planNote = document.getElementById('plan-note');
+        function renderPlan() {
+          var step = parseInt(selRitme.value, 10);       // days between releases
+          var buffer = parseInt(selBuffer.value, 10);    // desired scheduled days ahead
+          var lead = parseInt(selLead.value, 10);        // production days per video
+          // Release slots from Thu 19 Nov, following the chosen rhythm.
+          var start = Date.UTC(2026, 10, 19);
+          var horizon = 14; // days shown
+          var covered = 0, needed = 0, firstEmpty = null;
+          var html = '';
+          for (var i = 0; i < horizon; i++) {
+            var day = start + i * 86400000;
+            var isSlot = (i % step === 0);
+            var title = scheduledTitles[keyOf(day)];
+            if (!isSlot) {
+              html += '<div class="slot off"><span class="sd">' + fmtDay(day) + '</span><span class="ss">Tidak ada jadwal tayang</span></div>';
+              continue;
+            }
+            if (title) {
+              covered++;
+              html += '<div class="slot full"><span class="sd">' + fmtDay(day) + '</span><span class="ss">Terjadwal · ' + title + '</span></div>';
+            } else {
+              if (firstEmpty === null) firstEmpty = day;
+              var isNeed = needed < Math.max(0, buffer - covered);
+              if (isNeed) needed++;
+              html += '<div class="slot empty' + (isNeed ? ' need' : '') + '"><span class="sd">' + fmtDay(day) + '</span><span class="ss">' + (isNeed ? 'Kosong · masuk target stok aman' : 'Kosong') + '</span></div>';
+            }
+          }
+          slotsEl.innerHTML = html;
+          var needTotal = Math.max(0, buffer - covered);
+          outNeed.textContent = needTotal === 0 ? '0 · stok aman terpenuhi' : needTotal + ' video';
+          if (firstEmpty !== null && needTotal > 0) {
+            // Work backwards: the last needed video must be ready by its slot at 18:00;
+            // producing needTotal videos back-to-back at `lead` days each sets the start date.
+            var lastNeededSlot = firstEmpty + (needTotal - 1) * step * 86400000;
+            var startBy = lastNeededSlot - needTotal * lead * 86400000;
+            outDeadline.textContent = fmtDay(startBy);
+            planNote.textContent = 'Slot kosong pertama: ' + fmtDay(firstEmpty) + ' jam 18.00 WIB. Untuk mencapai stok aman ' + buffer + ' hari terjadwal, siapkan ' + needTotal + ' video baru (menutup slot sampai ' + fmtDay(lastNeededSlot) + '). Dengan waktu pengerjaan ' + lead + ' hari per video dikerjakan berurutan, produksi mulai paling lambat ' + fmtDay(startBy) + ' supaya video terakhir selesai sebelum slotnya tayang.';
+          } else if (firstEmpty !== null) {
+            outDeadline.textContent = 'Belum mendesak';
+            planNote.textContent = 'Stok aman ' + buffer + ' hari sudah terpenuhi oleh jadwal yang ada. Slot kosong pertama setelah itu: ' + fmtDay(firstEmpty) + ' jam 18.00 WIB.';
+          }
+        }
+        [selRitme, selBuffer, selLead].forEach(function (s) { s.addEventListener('change', renderPlan); });
+        renderPlan();
+
+        // Status filter for the video cards.
+        var buttons = document.querySelectorAll('.filters button');
+        var cards = document.querySelectorAll('.video-card');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            buttons.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+            btn.setAttribute('aria-pressed', 'true');
+            var f = btn.getAttribute('data-filter');
+            cards.forEach(function (card) {
+              card.hidden = !(f === 'all' || card.getAttribute('data-status') === f);
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

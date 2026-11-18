@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="Privacy Policy for Mula Know Dashboard — a private, read-only dashboard for the owner of the TikTok account @mulaknow." />
+<link rel="icon" href="data:," />
+<title>Privacy Policy — Mula Know Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f7f5f0;
+    --surface:#ffffff;
+    --surface-2:#f0ede6;
+    --ink:#1a1f1c;
+    --ink-2:#4a554e;
+    --ink-3:#7a857d;
+    --line:#e2ded2;
+    --line-strong:#cfc9b8;
+    --accent:#0e5e4a;
+    --accent-ink:#0a4636;
+    --accent-soft:#e6f0ec;
+    --gold:#b98a2f;
+    --gold-soft:#fdf3dc;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(20,30,25,.05), 0 8px 28px rgba(20,30,25,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#111412;
+      --surface:#1a1e1b;
+      --surface-2:#222723;
+      --ink:#eceee9;
+      --ink-2:#b6beb7;
+      --ink-3:#8a948c;
+      --line:#2c332e;
+      --line-strong:#3a423c;
+      --accent:#3ec9a3;
+      --accent-ink:#7eddc2;
+      --accent-soft:#17352c;
+      --gold:#d9a94a;
+      --gold-soft:#2e2614;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 28px rgba(0,0,0,.25);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Inter","Noto Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration-color:color-mix(in srgb, var(--accent) 45%, transparent);text-underline-offset:3px}
+  a:hover{text-decoration-color:var(--accent)}
+  button,[role="button"],select,summary,input:not([type="checkbox"],[type="radio"]){min-height:2rem}
+
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px 72px}
+
+  /* Top bar */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:18px 0 0;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .brand-mark{
+    width:42px;height:42px;border-radius:11px;flex:0 0 auto;
+    background:var(--accent);color:#fff;
+    display:grid;place-items:center;
+    font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:19px;letter-spacing:.02em;
+  }
+  @media (prefers-color-scheme: dark){.brand-mark{color:#0c1a15}}
+  .brand-name{font-weight:700;font-size:15px;line-height:1.2;letter-spacing:-.01em}
+  .brand-sub{font-size:12.5px;color:var(--ink-3);line-height:1.3}
+  .lang-switch{
+    display:flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;
+  }
+  .lang-switch button{
+    border:0;background:transparent;color:var(--ink-2);font:inherit;font-size:13px;font-weight:600;
+    padding:7px 14px;border-radius:999px;cursor:pointer;min-height:36px;
+  }
+  .lang-switch button[aria-pressed="true"]{background:var(--accent);color:#fff}
+  @media (prefers-color-scheme: dark){.lang-switch button[aria-pressed="true"]{color:#0c1a15}}
+
+  /* Hero */
+  .hero{padding:44px 0 8px}
+  .doc-label{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);
+    background:var(--accent-soft);border:1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+    padding:6px 12px;border-radius:999px;
+  }
+  .doc-label::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+  h1{
+    font-family:"Fraunces",Georgia,"Times New Roman",serif;
+    font-size:clamp(36px,6vw,54px);line-height:1.05;letter-spacing:-.015em;font-weight:700;
+    margin:18px 0 14px;
+  }
+  .lede{font-size:17.5px;line-height:1.6;color:var(--ink-2);max-width:640px;margin:0}
+  .meta-row{
+    display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:13.5px;color:var(--ink-3);
+  }
+  .meta-row strong{color:var(--ink);font-weight:600}
+  .meta-row a{font-weight:600}
+
+  /* Summary card */
+  .summary{
+    margin-top:28px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:22px 22px 8px;
+  }
+  .summary h2{
+    font-family:"Fraunces",Georgia,serif;font-size:19px;margin:0 0 4px;letter-spacing:-.01em;
+  }
+  .summary p{margin:0 0 14px;color:var(--ink-2);font-size:14.5px}
+  .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+  @media (max-width:640px){.summary-grid{grid-template-columns:1fr}}
+  .sum-item{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+  .sum-icon{
+    width:36px;height:36px;border-radius:9px;flex:0 0 auto;display:grid;place-items:center;
+    background:var(--accent-soft);color:var(--accent-ink);
+  }
+  .sum-icon svg{width:19px;height:19px}
+  .sum-item b{display:block;font-size:14.5px;line-height:1.35}
+  .sum-item span{display:block;font-size:13.5px;color:var(--ink-2);line-height:1.5;margin-top:2px}
+
+  /* TOC */
+  .toc{
+    margin-top:22px;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;
+  }
+  .toc-title{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px}
+  .toc ol{margin:0;padding:0;list-style:none;counter-reset:toc;display:grid;grid-template-columns:1fr 1fr;gap:4px 28px}
+  @media (max-width:640px){.toc ol{grid-template-columns:1fr}}
+  .toc li{counter-increment:toc}
+  .toc a{
+    display:flex;gap:10px;align-items:baseline;color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:500;
+    padding:7px 4px;border-radius:6px;min-height:36px;
+  }
+  .toc a::before{content:counter(toc,decimal-leading-zero);font-size:12px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+  .toc a:hover{background:var(--surface);color:var(--accent-ink)}
+
+  /* Sections */
+  section.policy{margin-top:38px;scroll-margin-top:20px}
+  .sec-head{display:flex;gap:14px;align-items:baseline;margin-bottom:10px}
+  .sec-num{
+    font-family:"Fraunces",Georgia,serif;font-size:15px;font-weight:700;color:var(--accent);
+    border:1.5px solid color-mix(in srgb, var(--accent) 40%, transparent);border-radius:8px;
+    width:34px;height:34px;display:grid;place-items:center;flex:0 0 auto;transform:translateY(6px);
+    font-variant-numeric:tabular-nums;
+  }
+  .sec-head h2{font-family:"Fraunces",Georgia,serif;font-size:24px;line-height:1.2;margin:0;letter-spacing:-.01em}
+  section.policy p{margin:0 0 12px;color:var(--ink-2);max-width:700px}
+  section.policy p strong, section.policy li strong{color:var(--ink)}
+  section.policy ul{margin:0 0 14px;padding-left:20px;color:var(--ink-2);max-width:700px}
+  section.policy li{margin-bottom:6px}
+  section.policy li::marker{color:var(--accent)}
+
+  /* Data table */
+  .table-scroll{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);margin:6px 0 16px;overflow:hidden}
+  table{border-collapse:collapse;width:100%;font-size:14.5px}
+  @media (max-width:640px){
+    table{font-size:13.5px;table-layout:fixed}
+    table th:nth-child(1), table td:nth-child(1){width:27%}
+    table th:nth-child(2), table td:nth-child(2){width:45%}
+    table th:nth-child(3), table td:nth-child(3){width:28%}
+    thead th{padding:11px 12px;white-space:normal}
+    tbody td{padding:11px 12px;overflow-wrap:break-word}
+    tbody td:first-child{white-space:normal}
+    .scope-tag{white-space:normal;overflow-wrap:anywhere}
+  }
+  thead th{
+    text-align:left;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700;
+    padding:13px 18px;border-bottom:1px solid var(--line-strong);background:var(--surface-2);white-space:nowrap;
+  }
+  tbody td{padding:13px 18px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+  tbody tr:last-child td{border-bottom:0}
+  tbody td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+  .scope-tag{
+    display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;
+    background:var(--accent-soft);color:var(--accent-ink);border-radius:999px;padding:2px 9px;white-space:nowrap;
+  }
+
+  /* Not-accessed list */
+  .not-list{list-style:none !important;padding:0 !important;display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px !important}
+  @media (max-width:640px){.not-list{grid-template-columns:1fr}}
+  .not-list li{
+    margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 15px;
+    display:flex;gap:11px;align-items:flex-start;font-size:14.5px;line-height:1.5;
+  }
+  .not-x{
+    width:24px;height:24px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;margin-top:1px;
+    background:#fdecec;color:#b42318;
+  }
+  @media (prefers-color-scheme: dark){.not-x{background:#3a1d1a;color:#ff9d94}}
+  .not-x svg{width:13px;height:13px}
+
+  .callout{
+    border:1px solid color-mix(in srgb, var(--gold) 45%, transparent);background:var(--gold-soft);
+    border-radius:var(--radius);padding:16px 18px;margin:4px 0 16px;max-width:700px;
+    font-size:14.5px;color:var(--ink-2);
+  }
+  .callout strong{color:var(--ink)}
+
+  /* Contact / footer */
+  .contact-card{
+    margin-top:44px;background:var(--accent);color:#fff;border-radius:var(--radius);padding:26px;
+    display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  }
+  @media (prefers-color-scheme: dark){.contact-card{color:#0d1f18}}
+  .contact-card h2{font-family:"Fraunces",Georgia,serif;font-size:21px;margin:0 0 6px}
+  .contact-card p{margin:0;font-size:14.5px;opacity:.88;max-width:480px;line-height:1.55}
+  .contact-btn{
+    display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--accent-ink);text-decoration:none;
+    font-weight:700;font-size:14.5px;padding:12px 20px;border-radius:999px;min-height:44px;white-space:nowrap;
+  }
+  @media (prefers-color-scheme: dark){.contact-btn{background:#0d1f18;color:#eafff6}}
+  footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between}
+  footer p{margin:0}
+
+  [data-lang]{display:none}
+  [data-lang].active{display:block}
+  span[data-lang]{display:none}
+  span[data-lang].active{display:inline}
+
+  @media print{
+    body{background:#fff}
+    .lang-switch,.toc{display:none}
+    .summary,.table-scroll,.contact-card{box-shadow:none}
+    .contact-card{background:#fff;color:#000;border:1px solid #ccc}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">M</div>
+      <div>
+        <div class="brand-name">Mula Know Dashboard</div>
+        <div class="brand-sub">
+          <span data-lang="en" class="active">Private dashboard · @mulaknow</span>
+          <span data-lang="id">Dashboard pribadi · @mulaknow</span>
+        </div>
+      </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / Bahasa">
+      <button type="button" id="btn-en" aria-pressed="true" onclick="setLang('en')">English</button>
+      <button type="button" id="btn-id" aria-pressed="false" onclick="setLang('id')">Bahasa Indonesia</button>
+    </div>
+  </div>
+
+  <!-- ============ ENGLISH ============ -->
+  <div data-lang="en" class="active">
+    <div class="hero">
+      <span class="doc-label">Legal Document</span>
+      <h1>Privacy Policy</h1>
+      <p class="lede">This policy explains what data the Mula Know Dashboard accesses, why it accesses it, and what it never does with it. The dashboard is a private, read-only tool built and used by a single person: the owner of the TikTok account <strong>@mulaknow</strong>.</p>
+      <div class="meta-row">
+        <span><strong>Effective date:</strong> 18 November 2026</span>
+        <span><strong>Last updated:</strong> 18 November 2026</span>
+        <span><strong>Applies to:</strong> Mula Know Dashboard (TikTok app)</span>
+        <span><strong>Account:</strong> <a href="https://www.tiktok.com/@mulaknow" target="_blank" rel="noopener">@mulaknow on TikTok</a></span>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h2>The short version</h2>
+      <p>Four commitments that cover almost everything on this page:</p>
+      <div class="summary-grid">
+        <div class="sum-item">
+          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div><b>Read-only, always</b><span>The dashboard only views data. It never posts, edits, deletes, follows, likes, or sends anything on TikTok.</span></div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></div>
+          <div><b>One account only: our own</b><span>It accesses public data belonging to @mulaknow alone. No other user's data is collected, viewed, or stored.</span></div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg></div>
+          <div><b>Comment text is never read</b><span>The dashboard sees comment <em>counts</em> only. The content of comments is not accessed, displayed, or stored.</span></div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div><b>Nothing is shared or sold</b><span>Data is shown only in the owner's private dashboard. No third parties, no advertisers, no data brokers, no tracking.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="toc" aria-label="Contents">
+      <p class="toc-title">Contents</p>
+      <ol>
+        <li><a href="#en-1">What this dashboard is</a></li>
+        <li><a href="#en-2">Data we access</a></li>
+        <li><a href="#en-3">Data we do not access</a></li>
+        <li><a href="#en-4">How the data is used</a></li>
+        <li><a href="#en-5">Data sharing</a></li>
+        <li><a href="#en-6">Cookies and tracking</a></li>
+        <li><a href="#en-7">Storage and retention</a></li>
+        <li><a href="#en-8">Security</a></li>
+        <li><a href="#en-9">Revoking access</a></li>
+        <li><a href="#en-10">Children</a></li>
+        <li><a href="#en-11">Changes to this policy</a></li>
+        <li><a href="#en-12">Contact</a></li>
+      </ol>
+    </nav>
+
+    <section class="policy" id="en-1">
+      <div class="sec-head"><span class="sec-num">1</span><h2>What this dashboard is</h2></div>
+      <p>The <strong>Mula Know Dashboard</strong> is a personal, private, read-only dashboard created by and for the owner of the TikTok account <strong>@mulaknow</strong> ("we", "us", "the owner"). It exists for one purpose: to let the account owner monitor the performance and upload status of their own TikTok videos in one place.</p>
+      <p>The dashboard is <strong>not a public product</strong>. It has no public sign-up, no other users, and no audience-facing features. The only TikTok account it ever connects to is @mulaknow, with that account owner's own authorisation through TikTok's official Login Kit flow.</p>
+      <p>Access is provided through the official <strong>TikTok API</strong> (Display API), using only the scopes granted to the "Mula Know Dashboard" app: <strong>user.info.basic</strong>, <strong>user.info.stats</strong>, and <strong>video.list</strong>.</p>
+    </section>
+
+    <section class="policy" id="en-2">
+      <div class="sec-head"><span class="sec-num">2</span><h2>Data we access</h2></div>
+      <p>Through the TikTok API, the dashboard accesses <strong>public data belonging to the @mulaknow account only</strong>. Nothing else. The complete list is:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Data</th><th>What it includes</th><th>API scope</th></tr></thead>
+          <tbody>
+            <tr><td>Basic profile information</td><td>Display name, username, avatar, bio, and profile link of the @mulaknow account</td><td><span class="scope-tag">user.info.basic</span></td></tr>
+            <tr><td>Account statistics</td><td>Follower count, following count, total likes received, and total video count of the @mulaknow account</td><td><span class="scope-tag">user.info.stats</span></td></tr>
+            <tr><td>Video list</td><td>The account's own published videos: title / caption text written by the owner, cover image, share link, and publish date</td><td><span class="scope-tag">video.list</span></td></tr>
+            <tr><td>Video counts</td><td>Per-video numbers only: view count, like count, comment count, and share count</td><td><span class="scope-tag">video.list</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>All of the above is information that is already publicly visible to anyone who visits the @mulaknow profile on TikTok. The dashboard simply presents the owner's own public numbers back to the owner in a more convenient format.</p>
+    </section>
+
+    <section class="policy" id="en-3">
+      <div class="sec-head"><span class="sec-num">3</span><h2>Data we do not access</h2></div>
+      <p>To be explicit, the dashboard does <strong>not</strong> access, collect, or store any of the following:</p>
+      <ul class="not-list">
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Comment content.</strong> Only the number of comments per video is shown. The text of comments, and who wrote them, is never read.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Other users' data.</strong> No data about followers, viewers, commenters, or any other TikTok user is collected in any form.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Private account data.</strong> No direct messages, drafts, private videos, watch history, search history, or liked-video lists.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Credentials.</strong> The TikTok password is never seen, requested, or stored. Authorisation happens entirely inside TikTok's own login flow.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Device and location data.</strong> No device identifiers, IP-based profiling, precise location, contacts, or files from any device.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Write actions of any kind.</strong> The app holds no permission to post, comment, like, follow, edit, or delete anything.</span></li>
+      </ul>
+    </section>
+
+    <section class="policy" id="en-4">
+      <div class="sec-head"><span class="sec-num">4</span><h2>How the data is used</h2></div>
+      <p>The data described in Section 2 is used for <strong>one purpose only</strong>: displaying it back to the account owner inside the private dashboard, so the owner can:</p>
+      <ul>
+        <li>See which of their own videos have been published and how each is performing;</li>
+        <li>Track view, like, comment, and share counts over time;</li>
+        <li>Plan future uploads based on their own publishing schedule.</li>
+      </ul>
+      <p>The data is <strong>not</strong> used for advertising, marketing to anyone, profiling, automated decision-making, training machine-learning models, or any purpose unrelated to the owner's own content management.</p>
+    </section>
+
+    <section class="policy" id="en-5">
+      <div class="sec-head"><span class="sec-num">5</span><h2>Data sharing</h2></div>
+      <p><strong>We do not share data with third parties.</strong> Specifically:</p>
+      <ul>
+        <li>Data is <strong>never sold</strong>, rented, or traded to anyone.</li>
+        <li>Data is <strong>never sent</strong> to advertisers, analytics companies, data brokers, or social networks other than TikTok itself (the source of the data).</li>
+        <li>No third-party SDKs, trackers, or embedded services receive any of the data.</li>
+        <li>The only systems involved are TikTok's official API, which provides the data, and the owner's own private dashboard, which displays it.</li>
+      </ul>
+      <div class="callout"><strong>No exceptions for sale or advertising.</strong> There is no business model attached to this dashboard: it is a personal tool with no users to monetise and no data to trade.</div>
+    </section>
+
+    <section class="policy" id="en-6">
+      <div class="sec-head"><span class="sec-num">6</span><h2>Cookies and tracking</h2></div>
+      <p>The dashboard and this policy page use <strong>no advertising cookies, no analytics cookies, and no cross-site tracking</strong> of any kind. We do not use Google Analytics, Meta Pixel, TikTok Pixel, fingerprinting, or any similar technology.</p>
+      <p>The only tokens involved are the TikTok API access and refresh tokens issued when the account owner authorises the app. These tokens exist solely so the dashboard can request the owner's own data from TikTok; they are not used to track any person, and they are never shared.</p>
+    </section>
+
+    <section class="policy" id="en-7">
+      <div class="sec-head"><span class="sec-num">7</span><h2>Storage and retention</h2></div>
+      <ul>
+        <li>Data is retrieved from the TikTok API and displayed to the owner. Any stored copy is limited to the owner's own public video list and counts, kept only so the dashboard can show recent performance without re-requesting it on every view.</li>
+        <li>API access and refresh tokens are stored securely and are used only to fetch the @mulaknow account's data.</li>
+        <li>If authorisation is revoked (see Section 9), the tokens become invalid immediately and any stored copy of the account data is deleted.</li>
+        <li>Because all data involved is the owner's own public data, no other person's information is ever retained.</li>
+      </ul>
+    </section>
+
+    <section class="policy" id="en-8">
+      <div class="sec-head"><span class="sec-num">8</span><h2>Security</h2></div>
+      <p>Access to the dashboard is restricted to the account owner. API credentials and tokens are kept in secure storage, are never published, and are never embedded in publicly accessible pages, including this one. All communication with the TikTok API takes place over encrypted HTTPS connections provided by TikTok's official endpoints.</p>
+    </section>
+
+    <section class="policy" id="en-9">
+      <div class="sec-head"><span class="sec-num">9</span><h2>Revoking access</h2></div>
+      <p>The account owner can disconnect this app at any time from within TikTok: <strong>Settings and privacy → Security and permissions → Apps and websites → Mula Know Dashboard → Remove access</strong>. Removing access immediately invalidates the app's tokens, after which the dashboard can no longer retrieve any data from the account.</p>
+      <p>Since the dashboard serves a single account whose owner is also its operator, no separate data-deletion request process is needed; revoking access and deleting stored copies is fully within the owner's direct control.</p>
+    </section>
+
+    <section class="policy" id="en-10">
+      <div class="sec-head"><span class="sec-num">10</span><h2>Children</h2></div>
+      <p>The dashboard is a personal tool for an adult account owner. It is not directed at children, offers no sign-up, and collects no data from any person other than displaying the owner's own public account data back to the owner.</p>
+    </section>
+
+    <section class="policy" id="en-11">
+      <div class="sec-head"><span class="sec-num">11</span><h2>Changes to this policy</h2></div>
+      <p>If this policy changes, the updated version will be published at this same URL with a new "Last updated" date. Material changes, such as requesting any additional TikTok API scope, will be reflected here before or at the time they take effect. Continued use of the dashboard after an update means the updated policy applies.</p>
+    </section>
+
+    <section class="policy" id="en-12">
+      <div class="sec-head"><span class="sec-num">12</span><h2>Contact</h2></div>
+      <p>Questions about this policy or about how the Mula Know Dashboard handles data can be sent to the account owner through the TikTok account itself:</p>
+    </section>
+
+    <div class="contact-card">
+      <div>
+        <h2>Questions about this policy?</h2>
+        <p>Reach the owner of the Mula Know Dashboard directly through the TikTok account the dashboard belongs to.</p>
+      </div>
+      <a class="contact-btn" href="https://www.tiktok.com/@mulaknow" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.6 6.3a4.8 4.8 0 0 1-3.5-4.6V1h-3.4v13.1a2.9 2.9 0 1 1-2-2.7V7.9a6.3 6.3 0 1 0 5.4 6.2V8.1a8.3 8.3 0 0 0 4.7 1.5V6.2c-.4 0-.8 0-1.2.1Z"/></svg>
+        @mulaknow on TikTok
+      </a>
+    </div>
+
+    <footer>
+      <p>© 2026 Mula Know Dashboard · Operated by the owner of @mulaknow</p>
+      <p>This page is the official Privacy Policy URL for the TikTok app "Mula Know Dashboard".</p>
+    </footer>
+  </div>
+
+  <!-- ============ INDONESIAN ============ -->
+  <div data-lang="id">
+    <div class="hero">
+      <span class="doc-label">Dokumen Legal</span>
+      <h1>Kebijakan Privasi</h1>
+      <p class="lede">Kebijakan ini menjelaskan data apa saja yang diakses Mula Know Dashboard, untuk apa data itu dipakai, dan apa yang tidak pernah dilakukan terhadap data tersebut. Dashboard ini adalah alat pribadi yang hanya bisa membaca data (read-only), dibuat dan dipakai oleh satu orang: pemilik akun TikTok <strong>@mulaknow</strong>.</p>
+      <div class="meta-row">
+        <span><strong>Berlaku sejak:</strong> 18 November 2026</span>
+        <span><strong>Terakhir diperbarui:</strong> 18 November 2026</span>
+        <span><strong>Berlaku untuk:</strong> Mula Know Dashboard (aplikasi TikTok)</span>
+        <span><strong>Akun:</strong> <a href="https://www.tiktok.com/@mulaknow" target="_blank" rel="noopener">@mulaknow di TikTok</a></span>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h2>Versi singkatnya</h2>
+      <p>Empat komitmen yang merangkum hampir seluruh isi halaman ini:</p>
+      <div class="summary-grid">
+        <div class="sum-item">
+          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div><b>Read-only, selalu</b><span>Dashboard ini hanya melihat data. Tidak pernah memposting, mengubah, menghapus, mengikuti, menyukai, atau mengirim apa pun di TikTok.</span></div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></div>
+          <div><b>Satu akun saja: akun sendiri</b><span>Hanya mengakses data publik milik @mulaknow. Data pengguna lain tidak dikumpulkan, dilihat, atau disimpan.</span></div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/></svg></div>
+          <div><b>Isi komentar tidak pernah dibaca</b><span>Dashboard hanya melihat <em>jumlah</em> komentar. Isi komentar tidak diakses, ditampilkan, atau disimpan.</span></div>
+        </div>
+        <div class="sum-item">
+          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div><b>Tidak dibagikan, tidak dijual</b><span>Data hanya ditampilkan di dashboard pribadi pemiliknya. Tanpa pihak ketiga, tanpa pengiklan, tanpa pelacakan.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="toc" aria-label="Daftar isi">
+      <p class="toc-title">Daftar Isi</p>
+      <ol>
+        <li><a href="#id-1">Apa itu dashboard ini</a></li>
+        <li><a href="#id-2">Data yang kami akses</a></li>
+        <li><a href="#id-3">Data yang tidak kami akses</a></li>
+        <li><a href="#id-4">Cara data digunakan</a></li>
+        <li><a href="#id-5">Pembagian data</a></li>
+        <li><a href="#id-6">Cookie dan pelacakan</a></li>
+        <li><a href="#id-7">Penyimpanan dan retensi</a></li>
+        <li><a href="#id-8">Keamanan</a></li>
+        <li><a href="#id-9">Mencabut akses</a></li>
+        <li><a href="#id-10">Anak-anak</a></li>
+        <li><a href="#id-11">Perubahan kebijakan</a></li>
+        <li><a href="#id-12">Kontak</a></li>
+      </ol>
+    </nav>
+
+    <section class="policy" id="id-1">
+      <div class="sec-head"><span class="sec-num">1</span><h2>Apa itu dashboard ini</h2></div>
+      <p><strong>Mula Know Dashboard</strong> adalah dashboard pribadi yang bersifat read-only, dibuat oleh dan untuk pemilik akun TikTok <strong>@mulaknow</strong> ("kami", "pemilik"). Tujuannya hanya satu: membantu pemilik akun memantau performa dan status unggahan video TikTok miliknya sendiri dalam satu tempat.</p>
+      <p>Dashboard ini <strong>bukan produk publik</strong>. Tidak ada pendaftaran umum, tidak ada pengguna lain, dan tidak ada fitur yang menghadap publik. Satu-satunya akun TikTok yang pernah terhubung adalah @mulaknow, dengan izin pemilik akun itu sendiri melalui alur resmi Login Kit dari TikTok.</p>
+      <p>Akses diberikan melalui <strong>TikTok API</strong> resmi (Display API), hanya dengan scope yang diberikan kepada aplikasi "Mula Know Dashboard": <strong>user.info.basic</strong>, <strong>user.info.stats</strong>, dan <strong>video.list</strong>.</p>
+    </section>
+
+    <section class="policy" id="id-2">
+      <div class="sec-head"><span class="sec-num">2</span><h2>Data yang kami akses</h2></div>
+      <p>Melalui TikTok API, dashboard mengakses <strong>data publik milik akun @mulaknow saja</strong>. Tidak ada yang lain. Daftar lengkapnya:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Data</th><th>Isinya</th><th>Scope API</th></tr></thead>
+          <tbody>
+            <tr><td>Info profil dasar</td><td>Nama tampilan, username, avatar, bio, dan tautan profil akun @mulaknow</td><td><span class="scope-tag">user.info.basic</span></td></tr>
+            <tr><td>Statistik akun</td><td>Jumlah pengikut, jumlah yang diikuti, total suka yang diterima, dan total video akun @mulaknow</td><td><span class="scope-tag">user.info.stats</span></td></tr>
+            <tr><td>Daftar video</td><td>Video milik akun sendiri yang sudah tayang: judul / teks caption yang ditulis pemilik, gambar sampul, tautan bagikan, dan tanggal tayang</td><td><span class="scope-tag">video.list</span></td></tr>
+            <tr><td>Angka per video</td><td>Hanya angka per video: jumlah views, likes, komentar, dan shares</td><td><span class="scope-tag">video.list</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Seluruh data di atas adalah informasi yang memang sudah terlihat publik oleh siapa pun yang membuka profil @mulaknow di TikTok. Dashboard hanya menampilkan kembali angka publik milik pemilik akun kepada pemiliknya sendiri dalam format yang lebih praktis.</p>
+    </section>
+
+    <section class="policy" id="id-3">
+      <div class="sec-head"><span class="sec-num">3</span><h2>Data yang tidak kami akses</h2></div>
+      <p>Secara tegas, dashboard ini <strong>tidak</strong> mengakses, mengumpulkan, atau menyimpan hal-hal berikut:</p>
+      <ul class="not-list">
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Isi komentar.</strong> Hanya jumlah komentar per video yang ditampilkan. Teks komentar dan siapa penulisnya tidak pernah dibaca.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Data pengguna lain.</strong> Tidak ada data tentang pengikut, penonton, pemberi komentar, atau pengguna TikTok mana pun yang dikumpulkan dalam bentuk apa pun.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Data privat akun.</strong> Tidak ada pesan langsung (DM), draf, video privat, riwayat tontonan, riwayat pencarian, atau daftar video yang disukai.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Kredensial.</strong> Kata sandi TikTok tidak pernah dilihat, diminta, atau disimpan. Proses izin sepenuhnya terjadi di dalam alur login milik TikTok sendiri.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Data perangkat dan lokasi.</strong> Tidak ada pengenal perangkat, profil berbasis IP, lokasi presisi, kontak, atau berkas dari perangkat mana pun.</span></li>
+        <li><span class="not-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></span><span><strong>Tindakan menulis apa pun.</strong> Aplikasi ini tidak memiliki izin untuk memposting, berkomentar, menyukai, mengikuti, mengubah, atau menghapus apa pun.</span></li>
+      </ul>
+    </section>
+
+    <section class="policy" id="id-4">
+      <div class="sec-head"><span class="sec-num">4</span><h2>Cara data digunakan</h2></div>
+      <p>Data pada Bagian 2 hanya digunakan untuk <strong>satu tujuan</strong>: menampilkannya kembali kepada pemilik akun di dalam dashboard pribadi, agar pemilik dapat:</p>
+      <ul>
+        <li>Melihat video miliknya sendiri yang sudah tayang dan performa masing-masing video;</li>
+        <li>Memantau jumlah views, likes, komentar, dan shares dari waktu ke waktu;</li>
+        <li>Merencanakan unggahan berikutnya berdasarkan jadwal tayang miliknya sendiri.</li>
+      </ul>
+      <p>Data <strong>tidak</strong> digunakan untuk iklan, pemasaran kepada siapa pun, pembuatan profil, pengambilan keputusan otomatis, pelatihan model machine learning, atau tujuan lain di luar pengelolaan konten milik pemilik akun sendiri.</p>
+    </section>
+
+    <section class="policy" id="id-5">
+      <div class="sec-head"><span class="sec-num">5</span><h2>Pembagian data</h2></div>
+      <p><strong>Kami tidak membagikan data kepada pihak ketiga.</strong> Secara khusus:</p>
+      <ul>
+        <li>Data <strong>tidak pernah dijual</strong>, disewakan, atau diperdagangkan kepada siapa pun.</li>
+        <li>Data <strong>tidak pernah dikirim</strong> ke pengiklan, perusahaan analitik, perantara data, atau jejaring sosial lain selain TikTok itu sendiri (sumber datanya).</li>
+        <li>Tidak ada SDK pihak ketiga, pelacak, atau layanan tertanam yang menerima data apa pun.</li>
+        <li>Satu-satunya sistem yang terlibat adalah TikTok API resmi, yang menyediakan data, dan dashboard pribadi pemilik akun, yang menampilkannya.</li>
+      </ul>
+      <div class="callout"><strong>Tanpa pengecualian untuk penjualan atau iklan.</strong> Dashboard ini tidak punya model bisnis: ini alat pribadi tanpa pengguna untuk dimonetisasi dan tanpa data untuk diperdagangkan.</div>
+    </section>
+
+    <section class="policy" id="id-6">
+      <div class="sec-head"><span class="sec-num">6</span><h2>Cookie dan pelacakan</h2></div>
+      <p>Dashboard dan halaman kebijakan ini <strong>tidak menggunakan cookie iklan, cookie analitik, maupun pelacakan lintas situs</strong> dalam bentuk apa pun. Kami tidak memakai Google Analytics, Meta Pixel, TikTok Pixel, fingerprinting, atau teknologi sejenis.</p>
+      <p>Satu-satunya token yang terlibat adalah access token dan refresh token TikTok API yang diterbitkan saat pemilik akun memberi izin ke aplikasi. Token ini hanya ada agar dashboard bisa meminta data milik pemilik akun sendiri dari TikTok; token ini tidak dipakai untuk melacak siapa pun dan tidak pernah dibagikan.</p>
+    </section>
+
+    <section class="policy" id="id-7">
+      <div class="sec-head"><span class="sec-num">7</span><h2>Penyimpanan dan retensi</h2></div>
+      <ul>
+        <li>Data diambil dari TikTok API dan ditampilkan kepada pemilik akun. Salinan yang disimpan terbatas pada daftar video publik dan angka-angka milik pemilik akun sendiri, hanya agar dashboard bisa menampilkan performa terbaru tanpa harus meminta ulang setiap kali dibuka.</li>
+        <li>Access token dan refresh token API disimpan secara aman dan hanya dipakai untuk mengambil data akun @mulaknow.</li>
+        <li>Jika izin dicabut (lihat Bagian 9), token langsung tidak berlaku dan salinan data akun yang tersimpan akan dihapus.</li>
+        <li>Karena seluruh data yang terlibat adalah data publik milik pemilik akun sendiri, tidak ada informasi milik orang lain yang pernah disimpan.</li>
+      </ul>
+    </section>
+
+    <section class="policy" id="id-8">
+      <div class="sec-head"><span class="sec-num">8</span><h2>Keamanan</h2></div>
+      <p>Akses ke dashboard dibatasi hanya untuk pemilik akun. Kredensial dan token API disimpan di penyimpanan yang aman, tidak pernah dipublikasikan, dan tidak pernah disematkan di halaman yang bisa diakses publik, termasuk halaman ini. Seluruh komunikasi dengan TikTok API berlangsung melalui koneksi HTTPS terenkripsi di endpoint resmi TikTok.</p>
+    </section>
+
+    <section class="policy" id="id-9">
+      <div class="sec-head"><span class="sec-num">9</span><h2>Mencabut akses</h2></div>
+      <p>Pemilik akun dapat memutus aplikasi ini kapan saja dari dalam TikTok: <strong>Pengaturan dan privasi → Keamanan dan izin → Aplikasi dan situs web → Mula Know Dashboard → Hapus akses</strong>. Menghapus akses langsung membuat token aplikasi tidak berlaku, dan setelah itu dashboard tidak bisa lagi mengambil data apa pun dari akun tersebut.</p>
+      <p>Karena dashboard ini melayani satu akun yang pemiliknya sekaligus operatornya, tidak diperlukan proses permintaan penghapusan data yang terpisah; pencabutan akses dan penghapusan salinan data sepenuhnya berada dalam kendali langsung pemilik akun.</p>
+    </section>
+
+    <section class="policy" id="id-10">
+      <div class="sec-head"><span class="sec-num">10</span><h2>Anak-anak</h2></div>
+      <p>Dashboard ini adalah alat pribadi untuk pemilik akun yang sudah dewasa. Dashboard ini tidak ditujukan untuk anak-anak, tidak menyediakan pendaftaran, dan tidak mengumpulkan data dari siapa pun selain menampilkan kembali data akun publik milik pemiliknya kepada pemiliknya sendiri.</p>
+    </section>
+
+    <section class="policy" id="id-11">
+      <div class="sec-head"><span class="sec-num">11</span><h2>Perubahan kebijakan ini</h2></div>
+      <p>Jika kebijakan ini berubah, versi terbaru akan diterbitkan di URL yang sama dengan tanggal "Terakhir diperbarui" yang baru. Perubahan penting, misalnya permintaan scope TikTok API tambahan, akan tercantum di sini sebelum atau saat perubahan itu berlaku. Penggunaan dashboard setelah pembaruan berarti kebijakan versi terbaru yang berlaku.</p>
+    </section>
+
+    <section class="policy" id="id-12">
+      <div class="sec-head"><span class="sec-num">12</span><h2>Kontak</h2></div>
+      <p>Pertanyaan tentang kebijakan ini atau tentang cara Mula Know Dashboard menangani data dapat disampaikan kepada pemilik akun melalui akun TikTok itu sendiri:</p>
+    </section>
+
+    <div class="contact-card">
+      <div>
+        <h2>Ada pertanyaan soal kebijakan ini?</h2>
+        <p>Hubungi pemilik Mula Know Dashboard langsung melalui akun TikTok yang terhubung dengan dashboard ini.</p>
+      </div>
+      <a class="contact-btn" href="https://www.tiktok.com/@mulaknow" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.6 6.3a4.8 4.8 0 0 1-3.5-4.6V1h-3.4v13.1a2.9 2.9 0 1 1-2-2.7V7.9a6.3 6.3 0 1 0 5.4 6.2V8.1a8.3 8.3 0 0 0 4.7 1.5V6.2c-.4 0-.8 0-1.2.1Z"/></svg>
+        @mulaknow di TikTok
+      </a>
+    </div>
+
+    <footer>
+      <p>© 2026 Mula Know Dashboard · Dioperasikan oleh pemilik @mulaknow</p>
+      <p>Halaman ini adalah URL Privacy Policy resmi untuk aplikasi TikTok "Mula Know Dashboard".</p>
+    </footer>
+  </div>
+
+</div>
+
+<script>
+  function setLang(lang){
+    document.querySelectorAll('[data-lang]').forEach(function(el){
+      el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+    });
+    document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+    document.getElementById('btn-id').setAttribute('aria-pressed', lang === 'id' ? 'true' : 'false');
+    document.documentElement.lang = lang === 'id' ? 'id' : 'en';
+    document.title = lang === 'id' ? 'Kebijakan Privasi — Mula Know Dashboard' : 'Privacy Policy — Mula Know Dashboard';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  // Default to English (required for TikTok app review); Indonesian available via toggle.
+  (function(){
+    var nav = (navigator.language || 'en').toLowerCase();
+    if (nav.indexOf('id') === 0) setLang('id');
+  })();
+</script>
+</body>
+</html>

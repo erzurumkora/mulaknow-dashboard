@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Terms of Service — Mula Know Dashboard</title>
+    <style>
+      :root {
+        --bg: #f7f5f0;
+        --surface: #ffffff;
+        --surface-2: #efede6;
+        --ink: #1a1f1c;
+        --ink-2: #4a524d;
+        --ink-3: #6b746e;
+        --line: #ddd9cd;
+        --accent: #0f5c4d;
+        --accent-soft: #e3efe9;
+        --accent-ink: #0a4237;
+        --warn-bg: #fdf3e3;
+        --warn-line: #e8cf9e;
+        --warn-ink: #6b4e12;
+        --radius: 14px;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121614;
+          --surface: #1b201d;
+          --surface-2: #222825;
+          --ink: #eef1ee;
+          --ink-2: #b9c1bb;
+          --ink-3: #8d9790;
+          --line: #313936;
+          --accent: #4cc2a4;
+          --accent-soft: #173028;
+          --accent-ink: #8fe0c8;
+          --warn-bg: #2b2110;
+          --warn-line: #5c4718;
+          --warn-ink: #e8c97a;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-text-size-adjust: 100%; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      .sans {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      .wrap {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 28px 20px 72px;
+      }
+
+      /* ---------- Header ---------- */
+      .doc-head { padding: 12px 0 26px; border-bottom: 2px solid var(--ink); }
+      .doc-kicker {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 10px;
+      }
+      h1 {
+        font-size: clamp(30px, 6vw, 42px);
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+        margin: 0 0 12px;
+        font-weight: 700;
+      }
+      .doc-sub {
+        font-size: 18px;
+        color: var(--ink-2);
+        margin: 0;
+        max-width: 62ch;
+      }
+      .meta-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        margin-top: 24px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      }
+      .meta-cell { background: var(--surface); padding: 14px 16px; }
+      .meta-label {
+        font-size: 11px; font-weight: 700; letter-spacing: .1em;
+        text-transform: uppercase; color: var(--ink-3); margin: 0 0 4px;
+      }
+      .meta-value { font-size: 15px; font-weight: 600; margin: 0; line-height: 1.4; }
+      .meta-value small { display: block; font-weight: 400; color: var(--ink-2); font-size: 13px; margin-top: 2px; }
+
+      /* ---------- Summary box ---------- */
+      .summary {
+        background: var(--accent-soft);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 20px 22px;
+        margin: 28px 0 8px;
+      }
+      .summary h2 {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 13px; font-weight: 700; letter-spacing: .1em;
+        text-transform: uppercase; color: var(--accent-ink); margin: 0 0 14px;
+      }
+      .summary ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+      .summary li {
+        display: flex; gap: 12px; align-items: flex-start;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 15px; line-height: 1.5;
+      }
+      .summary li svg { flex: 0 0 auto; margin-top: 2px; }
+      .summary li strong { font-weight: 700; }
+
+      /* ---------- Body sections ---------- */
+      section.term { padding: 26px 0 4px; border-bottom: 1px solid var(--line); }
+      section.term:last-of-type { border-bottom: none; }
+      .term-num {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 12px; font-weight: 700; letter-spacing: .12em;
+        color: var(--accent); text-transform: uppercase; margin: 0 0 6px;
+      }
+      h2.term-title { font-size: 23px; line-height: 1.25; margin: 0 0 12px; font-weight: 700; }
+      p { margin: 0 0 14px; }
+      p:last-child { margin-bottom: 18px; }
+      ul.plain, ol.plain { margin: 0 0 18px; padding-left: 22px; }
+      ul.plain li, ol.plain li { margin-bottom: 8px; }
+      ul.plain li::marker { color: var(--accent); }
+
+      .does-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 4px 0 20px; }
+      .does-card {
+        border: 1px solid var(--line); border-radius: var(--radius);
+        background: var(--surface); padding: 16px 18px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      }
+      .does-card h3 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+      .does-card.yes h3 { color: var(--accent-ink); }
+      .does-card.no h3 { color: #a33b2e; }
+      @media (prefers-color-scheme: dark) { .does-card.no h3 { color: #f0927f; } }
+      .does-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-size: 14.5px; line-height: 1.5; }
+      .does-card li { display: flex; gap: 9px; align-items: flex-start; }
+      .does-card li svg { flex: 0 0 auto; margin-top: 3px; }
+
+      .data-table {
+        width: 100%; border-collapse: collapse; margin: 4px 0 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 14.5px; background: var(--surface);
+        border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+      }
+      .data-table th, .data-table td { text-align: left; padding: 11px 14px; vertical-align: top; }
+      .data-table thead th {
+        background: var(--surface-2); font-size: 11.5px; letter-spacing: .08em;
+        text-transform: uppercase; color: var(--ink-2); border-bottom: 1px solid var(--line);
+      }
+      .data-table tbody tr + tr td { border-top: 1px solid var(--line); }
+      .data-table td:first-child { font-weight: 600; white-space: nowrap; }
+
+      .callout {
+        background: var(--warn-bg); border: 1px solid var(--warn-line);
+        border-radius: var(--radius); padding: 16px 18px; margin: 4px 0 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 15px; line-height: 1.55; color: var(--ink);
+      }
+      .callout strong { color: var(--warn-ink); }
+
+      footer.doc-foot {
+        margin-top: 36px; padding-top: 22px; border-top: 2px solid var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        font-size: 13.5px; color: var(--ink-2); line-height: 1.6;
+      }
+      footer.doc-foot p { margin: 0 0 8px; }
+      a { color: var(--accent); text-underline-offset: 3px; }
+      a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+      @media (max-width: 560px) {
+        body { font-size: 16px; }
+        .wrap { padding: 20px 16px 56px; }
+        .meta-grid, .does-grid { grid-template-columns: 1fr; }
+        .data-table td:first-child { white-space: normal; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+
+      <header class="doc-head">
+        <p class="doc-kicker">Mula Know Dashboard</p>
+        <h1>Terms of Service</h1>
+        <p class="doc-sub">These terms govern the use of Mula Know Dashboard, a private, read-only monitoring tool built and used solely by the owner of the TikTok account <strong>@mulaknow</strong>.</p>
+
+        <div class="meta-grid" role="table" aria-label="Document details">
+          <div class="meta-cell">
+            <p class="meta-label">Service</p>
+            <p class="meta-value">Mula Know Dashboard<small>TikTok application name: “Mula Know Dashboard”</small></p>
+          </div>
+          <div class="meta-cell">
+            <p class="meta-label">Connected account</p>
+            <p class="meta-value">TikTok @mulaknow<small>Single account, owned by the operator of this service</small></p>
+          </div>
+          <div class="meta-cell">
+            <p class="meta-label">Effective date</p>
+            <p class="meta-value">18 November 2026</p>
+          </div>
+          <div class="meta-cell">
+            <p class="meta-label">Access</p>
+            <p class="meta-value">Private — account owner only<small>Not offered to the public or to any other user</small></p>
+          </div>
+        </div>
+      </header>
+
+      <div class="summary" aria-label="Summary of key terms">
+        <h2>Key terms at a glance</h2>
+        <ul>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>Read-only.</strong> The dashboard only displays information. It cannot create, edit, publish, or delete anything.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>Own account only.</strong> It shows only the public videos of @mulaknow and their counts: views, likes, comments, and shares.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>Counts, not content.</strong> The dashboard reads the number of comments on a video. It does not read, display, or store the text of any comment.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>No third-party sharing.</strong> Data obtained through TikTok is not sold, shared, or transferred to any third party.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>One user.</strong> Use is limited to the owner of the @mulaknow account, for monitoring their own upload status.</span>
+          </li>
+        </ul>
+      </div>
+
+      <section class="term" id="s1">
+        <p class="term-num">Section 1</p>
+        <h2 class="term-title">About this service</h2>
+        <p>Mula Know Dashboard (“the Dashboard”, “the Service”) is a personal monitoring tool created by the owner of the TikTok account <strong>@mulaknow</strong> (“the Owner”) to keep track of that account’s own published videos.</p>
+        <p>The Dashboard connects to TikTok through the official TikTok API, using the application registered as <strong>“Mula Know Dashboard”</strong>, and retrieves a list of the account’s public videos together with their engagement counts. It exists for one purpose: so the Owner can see, in one place, which videos are live and how many views, likes, comments, and shares each one has received.</p>
+        <p>The Dashboard is not a public product. It is not marketed, distributed, or made available to other TikTok users, and it provides no service to anyone other than the Owner.</p>
+      </section>
+
+      <section class="term" id="s2">
+        <p class="term-num">Section 2</p>
+        <h2 class="term-title">What the Dashboard does — and does not do</h2>
+
+        <div class="does-grid">
+          <div class="does-card yes">
+            <h3>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              The Dashboard does
+            </h3>
+            <ul>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>List the public videos published by @mulaknow</span></li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Show the view, like, comment, and share <em>counts</em> for each video</span></li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Help the Owner confirm that scheduled uploads have been published</span></li>
+            </ul>
+          </div>
+          <div class="does-card no">
+            <h3>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+              The Dashboard does not
+            </h3>
+            <ul>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Read, display, or store the content of any comment</span></li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Post, upload, schedule, or publish any video or other content</span></li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Like, follow, message, reply, or otherwise interact with any account</span></li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Change any account setting, profile detail, or video</span></li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Access any account other than @mulaknow, or any private content</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p>The Dashboard performs no write operation of any kind against TikTok. Every request it makes is a read request, and it requests only the permissions (scopes) needed to list the Owner’s own videos and read their public counts.</p>
+      </section>
+
+      <section class="term" id="s3">
+        <p class="term-num">Section 3</p>
+        <h2 class="term-title">Who may use the Dashboard</h2>
+        <p>Use of the Dashboard is limited to the Owner of the TikTok account @mulaknow. No other person is authorised to use it, and no account other than @mulaknow may be connected to it.</p>
+        <p>By using the Dashboard, the Owner confirms that:</p>
+        <ul class="plain">
+          <li>they are the legitimate owner of, and have full authority over, the @mulaknow TikTok account;</li>
+          <li>they authorised the connection between the Dashboard and TikTok themselves, through TikTok’s own login and consent flow;</li>
+          <li>they will use the Dashboard only to monitor their own account and its upload status.</li>
+        </ul>
+        <p>The Owner may revoke the Dashboard’s access at any time from within TikTok’s settings, or by disconnecting the application. Revoking access stops all further data retrieval immediately.</p>
+      </section>
+
+      <section class="term" id="s4">
+        <p class="term-num">Section 4</p>
+        <h2 class="term-title">Data the Dashboard accesses</h2>
+        <p>The Dashboard accesses only the following data, all of which is public information about the Owner’s own account, returned by the TikTok API:</p>
+
+        <table class="data-table">
+          <thead>
+            <tr><th scope="col">Data</th><th scope="col">Why it is used</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Video list</td><td>To show which of the Owner’s videos are published and live.</td></tr>
+            <tr><td>View count</td><td>To show how many times each video has been watched.</td></tr>
+            <tr><td>Like count</td><td>To show how many likes each video has received.</td></tr>
+            <tr><td>Comment count</td><td>To show how many comments each video has received. The number only — comment text is never requested.</td></tr>
+            <tr><td>Share count</td><td>To show how many times each video has been shared.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout">
+          <p style="margin:0"><strong>Comment content is out of scope.</strong> TikTok’s official API does not provide a way for this application to read the text of comments, and the Dashboard does not attempt to obtain it by any other means. Only the comment <em>count</em> is displayed.</p>
+        </div>
+
+        <p>The Dashboard does not collect data about viewers, followers, commenters, or any other TikTok user. It does not build profiles of individuals, and it does not track anyone’s behaviour.</p>
+      </section>
+
+      <section class="term" id="s5">
+        <p class="term-num">Section 5</p>
+        <h2 class="term-title">Sharing of data</h2>
+        <p>Data obtained through the TikTok API is <strong>not shared with, sold to, rented to, or transferred to any third party</strong>. It is not used for advertising, marketing, analytics services, data brokerage, or model training, and it is not combined with data from any other source for the purpose of identifying individuals.</p>
+        <p>The figures shown in the Dashboard describe the Owner’s own account and are visible only to the Owner. The only external services involved are TikTok itself, which supplies the data, and the hosting used to display the Dashboard page to the Owner.</p>
+      </section>
+
+      <section class="term" id="s6">
+        <p class="term-num">Section 6</p>
+        <h2 class="term-title">Acceptable use</h2>
+        <p>The Owner agrees to use the Dashboard only as described in these terms, and in line with TikTok’s own Terms of Service and developer policies. In particular, the Dashboard must not be used to:</p>
+        <ul class="plain">
+          <li>access, or attempt to access, any TikTok account other than @mulaknow;</li>
+          <li>scrape, harvest, or bulk-download data from TikTok outside the official API;</li>
+          <li>circumvent TikTok’s access controls, rate limits, or permission scopes;</li>
+          <li>publish, upload, modify, or delete content on TikTok through the Dashboard;</li>
+          <li>provide access to the Dashboard, or to data obtained through it, to any other person;</li>
+          <li>use the data for any unlawful purpose, or in any way that infringes another person’s rights.</li>
+        </ul>
+      </section>
+
+      <section class="term" id="s7">
+        <p class="term-num">Section 7</p>
+        <h2 class="term-title">Relationship with TikTok</h2>
+        <p>The Dashboard is an independent personal tool. It is not developed by, endorsed by, sponsored by, or affiliated with TikTok or ByteDance. “TikTok” is a trademark of its respective owner and is used here only to identify the platform the Dashboard connects to.</p>
+        <p>The Dashboard depends on the availability and continued operation of the TikTok API. TikTok may change, limit, or withdraw API access at any time; if that happens, some or all of the Dashboard’s figures may stop updating, and no guarantee is made that the Service will continue to function.</p>
+        <p>Figures shown in the Dashboard are those reported by TikTok at the time they were retrieved. They may differ slightly from the figures shown inside the TikTok app, for example because of caching or reporting delays on TikTok’s side.</p>
+      </section>
+
+      <section class="term" id="s8">
+        <p class="term-num">Section 8</p>
+        <h2 class="term-title">Availability and changes to the Service</h2>
+        <p>The Dashboard is provided on an “as is” and “as available” basis, for the Owner’s personal use, without warranties of any kind. The Owner may change, suspend, or discontinue the Dashboard at any time, in whole or in part, without notice.</p>
+        <p>Because the Dashboard performs no write operations, using it cannot alter, damage, or delete anything in the @mulaknow TikTok account.</p>
+      </section>
+
+      <section class="term" id="s9">
+        <p class="term-num">Section 9</p>
+        <h2 class="term-title">Limitation of liability</h2>
+        <p>To the maximum extent permitted by applicable law, the Owner accepts that the Dashboard is a personal tool used at their own discretion, and that no liability arises from its use, from inaccuracies in figures reported by TikTok, or from interruptions in the TikTok API. Nothing in these terms limits liability that cannot be limited under applicable law.</p>
+      </section>
+
+      <section class="term" id="s10">
+        <p class="term-num">Section 10</p>
+        <h2 class="term-title">Changes to these terms</h2>
+        <p>These terms may be updated when the Dashboard’s functionality changes. Any change that expands what data the Dashboard accesses, or what it does with that data, will be reflected here before it takes effect, and the effective date at the top of this page will be updated. Continued use of the Dashboard after an update means the updated terms apply.</p>
+        <p>If a future version of the Dashboard were ever to request additional TikTok permissions, those permissions, and the reason for them, would be described in this document and in the application’s submission to TikTok before being used.</p>
+      </section>
+
+      <section class="term" id="s11">
+        <p class="term-num">Section 11</p>
+        <h2 class="term-title">Contact</h2>
+        <p>Questions about these terms, or about how the Dashboard uses TikTok data, can be directed to the owner of the TikTok account <strong>@mulaknow</strong> through that TikTok account. As the Dashboard serves a single user — its owner — there is no separate support channel, sign-up process, or user account system.</p>
+      </section>
+
+      <footer class="doc-foot">
+        <p><strong>Mula Know Dashboard — Terms of Service.</strong> Effective 18 November 2026.</p>
+        <p>This page is the Terms of Service URL submitted with the TikTok application “Mula Know Dashboard”. It describes a private, read-only tool used only by the owner of TikTok @mulaknow to view that account’s own public videos and their view, like, comment, and share counts.</p>
+      </footer>
+
+    </main>
+  </body>
+</html>
